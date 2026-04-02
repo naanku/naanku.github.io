@@ -2503,6 +2503,7 @@ function downloadQR() {
   link.click();
 }
 
+  
 function copyURL() {
   navigator.clipboard.writeText('https://naanku.github.io').then(() => {
     const btn = document.getElementById('copy-txt');
