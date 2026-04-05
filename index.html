@@ -1686,15 +1686,15 @@
             <h2 class="sec-h">Career <span>Timeline</span></h2>
             <div class="exp-list">
                <div class="exp-row rv">
-                  <div class="exp-date">Present</div>
+                  <div class="exp-date" data-start="2026-04">2026-Present</div>
                   <div class="exp-mid">
                      <div class="exp-dot"></div>
                   </div>
                   <div class="exp-body">
-                     <h3>Senior Manager, Quality and Performance (Contractor)</h3>
-                     <p class="exp-co">CSX Technology, Inc</p>
-                     <p>AI-enabled test architecture to business outcomes with a lens on cost optimization, compliance, and scalability.</p>
-                     <div class="exp-chips"><span class="ec">Python</span><span class="ec">SQL</span><span class="ec">TypeScript</span><span class="ec">Power BI</span><span class="ec">LLMTesting</span></div>
+                     <h3>Senior Manager, Quality and Performance</h3>
+                     <p class="exp-co">NTT Data, Inc</p>
+                     <p>Drive QA strategy across multiple software releases by leading GenAI and LLM adoption, including AI-assisted test generation, intelligent defect analysis, and prompt-driven automation to accelerate testing cycles. Manage and mentor QA analysts and automation engineers through assignment planning, peer reviews, and ongoing coaching, while overseeing functional, regression, integration, smoke, and performance testing to ensure release readiness, business continuity, and informed risk-based release decisions.</p>
+                     <div class="exp-chips"><span class="ec">QA Leadership</span><span class="ec">Management</span><span class="ec">Automation</span><span class="ec">AI-driven QA</span><span class="ec">Executive Reporting</span></div>
                   </div>
                </div>
                <div class="exp-row rv">
@@ -1705,8 +1705,7 @@
                   <div class="exp-body">
                      <h3>Senior Test Architect - Cloud, Data & AI Quality</h3>
                      <p class="exp-co">The Winnd-Dixie Company</p>
-                     <p>Lead enterprise Quality Engineering architecture and strategy across multiple digital, mobile, and POS platforms supporting
-mission-critical retail systems.</p>
+                     <p>Led enterprise Quality Engineering architecture and strategy across multiple digital, mobile, and POS platforms supporting mission-critical retail systems.</p>
                      <div class="exp-chips"><span class="ec">Azure</span><span class="ec">Databricks</span><span class="ec">Agentic AI</span><span class="ec">Purview</span><span class="ec">Medallion</span><span class="ec">MCP</span></div>
                   </div>
                </div>
@@ -1724,6 +1723,37 @@ mission-critical retail systems.</p>
                </div>
             </div>
          </div>
+<script>
+  function getDurationText(startStr) {
+    const [year, month] = startStr.split('-').map(Number);
+    const startDate = new Date(year, month - 1);
+    const now = new Date();
+
+    let totalMonths =
+      (now.getFullYear() - startDate.getFullYear()) * 12 +
+      (now.getMonth() - startDate.getMonth());
+
+    if (totalMonths < 0) totalMonths = 0;
+
+    const years = Math.floor(totalMonths / 12);
+    const months = totalMonths % 12;
+
+    if (years > 0) {
+      return months > 0
+        ? `${years} yr${years > 1 ? 's' : ''} ${months} mo${months > 1 ? 's' : ''}`
+        : `${years} yr${years > 1 ? 's' : ''}`;
+    }
+
+    return `${months} mo${months !== 1 ? 's' : ''}`;
+  }
+
+  document.querySelectorAll('.exp-date[data-start]').forEach(el => {
+    const start = el.dataset.start;
+    const baseText = el.textContent.trim();
+    const duration = getDurationText(start);
+    el.innerHTML = `${baseText} <br>${duration}`;
+  });
+</script>
       </section>
       <!-- ════ CERTIFICATIONS ════ -->
       <section id="certifications">
@@ -2032,7 +2062,7 @@ mission-critical retail systems.</p>
             ─────────────────────────────────
             SETUP STEPS (free, 5 min):
             1. Go to https://www.emailjs.com and sign up
-            2. Add an Email Service → connect your Gmail/Outlook (use myadavalli@infodatasol.com)
+            2. Add an Email Service → connect your Gmail/Outlook (use yadavalli@infodatasol.com)
             3. Create TWO Email Templates:
                Template 1 "consult_notify" — sends TO you with form fields:
                  Subject: "New Consultation Request from {{from_name}}"
